@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('body');
             $table->string('slug');
             $table->string('thumb')->nullable();
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
     }
