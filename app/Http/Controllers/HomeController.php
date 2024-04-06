@@ -7,9 +7,17 @@ use App\Models\Post;
 
 class HomeController extends Controller
 {
-    public function show($post){
+    public function index()
+    {
+        dd(Post::all());
 
-        $post = Post::where('slug', $post)->first();
+        return view('posts.index', compact('posts'));
+    }
+
+    public function show($post)
+    {
+
+        $post = Post::where('slug', $post)->firstOrFail();
         return view('posts.post', compact('post')); //['post' => $post] //php.net/compact
     }
 }

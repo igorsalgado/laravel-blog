@@ -14,15 +14,8 @@ class PostsTableSeeder extends Seeder
      */
     public function run(): void
     {
+        \App\Models\Post::factory(10)->create();
 
-        DB::table('posts')->insert([
-            'title' => 'Post exemplo',
-            'description' => 'Descrição Post',
-            'body' => 'Conteúdo Post',
-            'slug' => 'post-exemplo',
-            'thumb' => 'thumb-test.png',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
+        \App\Models\Post::factory(10)->active()->create();
     }
 }
