@@ -9,8 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        dd(Post::all());
-
+        $posts = Post::where('is_active', true)->get();
         return view('posts.index', compact('posts'));
     }
 
