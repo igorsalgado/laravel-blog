@@ -30,7 +30,7 @@
                             <td class="px-2 py-4 text-left">{{ $post->title }}</td>
                             <td class="px-2 py-4 text-left">{{ $post->created_at->format('d/m/Y H:i:s') }}</td>
                             <td class="px-2 py-4 text-left">
-                                <span class="{{ $post->is_active ? 'text-green-800' : 'text-red-800' }}">
+                                <span class="font-bold {{ $post->is_active ? 'text-green-800' : 'text-red-800' }}">
                                     {{ $post->is_active ? 'Ativo' : 'Inativo' }}
                                 </span>
                             </td>
