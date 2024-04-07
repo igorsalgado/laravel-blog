@@ -22,11 +22,12 @@ Route::get('/posts/{posts}', [\App\Http\Controllers\HomeController::class, 'show
 //Rotas Admin
 Route::prefix('/admin')->group(function () {
     Route::prefix('/posts')
-        ->name('post.')
+        ->name('admin.posts.')
         ->controller(\App\Http\Controllers\admin\PostsController::class)
         ->group(function () {
             Route::get('/', 'index')->name('index'); //apelido admin.posts.index
             Route::get('/create', 'create')->name('create'); //apelido admin.posts.create
+            Route::post('/store', 'store')->name('store'); //apelido admin.posts.store
         });
 });
 
