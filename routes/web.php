@@ -14,12 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+//Rotas Home
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/posts/{posts}', [\App\Http\Controllers\HomeController::class, 'show']);
 
 
+//Rotas Admin
+Route::prefix('/admin')->group(function () {
+    Route::prefix('/posts')
+        ->name('post.')
+        ->controller(\App\Http\Controllers\admin\PostsController::class)
+        ->group(function () {
+            Route::get('/', 'index')->name('index'); //apelido admin.posts.index
+            Route::get('/create', 'create')->name('create'); //apelido admin.posts.create
+        });
+});
 
+
+
+//Rotas Vite
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
