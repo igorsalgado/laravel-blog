@@ -34,7 +34,7 @@ class PostsController extends Controller
 
         $data = $request->all();
         $data['slug'] = Str::slug($data['title']); //melhorado com http://laravel.com/docs/10.x/eloquent-mutators
-
+        $data['thumb'] = $request->thumb?->store('posts', 'public');
 
         Post::create($data); //array associativo pegando name do input para fazer o match coluna = valor
 
