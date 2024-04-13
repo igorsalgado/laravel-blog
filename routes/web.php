@@ -28,6 +28,9 @@ Route::prefix('/admin')->group(function () {
             Route::get('/', 'index')->name('index'); //apelido admin.posts.index
             Route::get('/create', 'create')->name('create'); //apelido admin.posts.create
             Route::post('/store', 'store')->name('store'); //apelido admin.posts.store
+
+            Route::get('/{post}/edit', 'edit')->name('edit'); //apelido admin.id.edit
+            Route::post('/{post}/edit', 'update')->name('update'); //apelido admin.id.edit
         });
 });
 

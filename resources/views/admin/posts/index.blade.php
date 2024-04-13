@@ -35,7 +35,7 @@
                                 </span>
                             </td>
                             <td class="px-2 py-4 text-left">
-                                <a href="#"
+                                <a href="{{ route('admin.posts.edit', $post->id) }}"
                                     class="px-4 py-2 text-white transition duration-300 ease-in-out bg-blue-700 rounded shadow text-bold hover:bg-blue-900">Editar</a>
                             </td>
                             </tr>

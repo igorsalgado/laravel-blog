@@ -40,4 +40,19 @@ class PostsController extends Controller
 
         return redirect()->route('admin.posts.index');
     }
+
+    public function edit($post)
+    {
+        $post = Post::findOrFail($post);
+
+        return view('admin.posts.edit', compact('post'));
+    }
+
+    public function update($post, Request $request)
+    {
+        $data = ($request->all());
+        $post = Post::findOrFail($post);
+
+        return redirect()->route('admin.posts.edit', $post->id);
+    }
 }
