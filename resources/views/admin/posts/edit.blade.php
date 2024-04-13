@@ -41,6 +41,7 @@
                             class="px-4 py-2 mt-5 text-xl text-white transition duration-300 ease-in-out bg-green-700 rounded shadow text-bold hover:bg-green-900">
                             Editar Post
                         </button>
+
                     </div>
                 </form>
 

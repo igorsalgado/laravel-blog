@@ -31,6 +31,8 @@ Route::prefix('/admin')->group(function () {
 
             Route::get('/{post}/edit', 'edit')->name('edit'); //apelido admin.id.edit
             Route::post('/{post}/edit', 'update')->name('update'); //apelido admin.id.edit
+
+            Route::post('/{post}/destroy', 'destroy')->name('destroy');
         });
 });
 

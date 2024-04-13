@@ -55,4 +55,12 @@ class PostsController extends Controller
 
         return redirect()->route('admin.posts.edit', $post->id);
     }
+
+    public function destroy($post)
+    {
+        $post = Post::findOrFail($post);
+        $post->delete();
+
+        return redirect()->back();
+    }
 }
