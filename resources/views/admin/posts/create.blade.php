@@ -33,6 +33,21 @@
                             </div>
                         </div>
                     </div>
+
+
+                    <div class="w-full mb-6 bg-white p-2">
+                        <div class="w-1/2">
+                            @if ($post->thumb)
+                                <img src="{{ asset('storage/' . $post->thumb) }}"
+                                    alt="Capa da Postagem: {{ $post->title }}">
+                            @endif
+                        </div>
+                        <div class="w-1/2">
+                            <label for="" class="block mb-2 text-black">Capa Postagem</label>
+                            <input type="file" class="w-full rounded" name="thumb">
+                        </div>
+                    </div>
+
                     <div class="w-full mb-6 bg-white p-2">
                         <label for="" class="block mb-2 text-black">Capa Postagem</label>
                         <input type="file" class="w-full rounded" name="thumb">

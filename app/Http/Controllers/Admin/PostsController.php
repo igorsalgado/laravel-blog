@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -51,6 +52,13 @@ class PostsController extends Controller
     public function update($post, Request $request)
     {
         $post = Post::findOrFail($post);
+
+        if ($request->thumb) {
+            if ($post->thumb) Storage::disk('public')->delete($post->thumb);
+
+            $data['thumb'] = $request->thumb?->store('posts', 'public');
+        }
+
         $post->update($request->all());
 
         return redirect()->route('admin.posts.edit', $post->id);
