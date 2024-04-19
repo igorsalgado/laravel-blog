@@ -6,7 +6,9 @@ use App\Models\Post;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Storage;
+
 
 class PostsController extends Controller
 {
@@ -21,7 +23,7 @@ class PostsController extends Controller
         return view('admin.posts.create');
     }
 
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         // Active Record
         // $post = new Post();
@@ -49,7 +51,7 @@ class PostsController extends Controller
         return view('admin.posts.edit', compact('post'));
     }
 
-    public function update($post, Request $request)
+    public function update($post, PostRequest $request)
     {
         $post = Post::findOrFail($post);
 
