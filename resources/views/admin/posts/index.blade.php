@@ -17,6 +17,7 @@
                     <thead>
                         <tr>
                             <th class="px-2 py-4 text-left">#</th>
+                            <th class="px-2 py-4 text-left">Autor</th>
                             <th class="px-2 py-4 text-left">Titulo</th>
                             <th class="px-2 py-4 text-left">Criado em</th>
                             <th class="px-2 py-4 text-left">Status</th>
@@ -27,6 +28,7 @@
                         @forelse($posts as $post)
                             </tr>
                             <td class="px-2 py-4 text-left">{{ $post->id }}</td>
+                            <td class="px-2 py-4 text-left">{{ $post->user?->name }}</td>
                             <td class="px-2 py-4 text-left">{{ $post->title }}</td>
                             <td class="px-2 py-4 text-left">{{ $post->created_at->format('d/m/Y H:i:s') }}</td>
                             <td class="px-2 py-4 text-left">

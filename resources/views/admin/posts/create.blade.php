@@ -60,7 +60,7 @@
                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                             @endforeach
                         </select>
-                        @error('thumb')
+                        @error('user')
                             <div class="w-full p-2 mt-2 font-bold text-red-600 bg-red-200 border border-red-600 rounded">
                                 {{ $message }}
                             </div>

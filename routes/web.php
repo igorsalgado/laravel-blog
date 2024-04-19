@@ -36,7 +36,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     //         Route::post('/{post}/destroy', 'destroy')->name('destroy');
     //     });
 
-});
+})->middleware('auth');
 
 
 
