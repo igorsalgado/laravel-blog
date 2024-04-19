@@ -12,9 +12,13 @@ use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
+    public function __construct(private Post $post)
+    {
+    }
+
     public function index()
     {
-        $posts = Post::latest()->paginate(10);
+        $posts = $this->post->latest()->paginate(10);
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -39,21 +43,21 @@ class PostsController extends Controller
         $data['slug'] = Str::slug($data['title']); //melhorado com http://laravel.com/docs/10.x/eloquent-mutators
         $data['thumb'] = $request->thumb?->store('posts', 'public');
 
-        Post::create($data); //array associativo pegando name do input para fazer o match coluna = valor
+        $this->post->create($data); //array associativo pegando name do input para fazer o match coluna = valor
 
         return redirect()->route('admin.posts.index');
     }
 
     public function edit($post)
     {
-        $post = Post::findOrFail($post);
+        $post = $this->post->findOrFail($post);
 
         return view('admin.posts.edit', compact('post'));
     }
 
     public function update($post, PostRequest $request)
     {
-        $post = Post::findOrFail($post);
+        $post = $this->post->findOrFail($post);
 
         if ($request->thumb) {
             if ($post->thumb) Storage::disk('public')->delete($post->thumb);
@@ -68,7 +72,7 @@ class PostsController extends Controller
 
     public function destroy($post)
     {
-        $post = Post::findOrFail($post);
+        $post = $this->post->findOrFail($post);
         $post->delete();
 
         return redirect()->back();
