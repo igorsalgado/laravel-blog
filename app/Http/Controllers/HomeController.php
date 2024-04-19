@@ -14,7 +14,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $posts = $this->post->where('is_active', true)->paginate(10);
+        $posts = $this->post->where('is_active', true)->latest()->paginate(10);
 
         return view('posts.index', compact('posts'));
     }

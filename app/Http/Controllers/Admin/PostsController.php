@@ -44,8 +44,9 @@ class PostsController extends Controller
         $data = $request->all();
         $data['slug'] = Str::slug($data['title']); //melhorado com http://laravel.com/docs/10.x/eloquent-mutators
         $data['thumb'] = $request->thumb?->store('posts', 'public');
-        $user = $user->find($request->user);
 
+        // $user = auth()->user(); //model User populado com os dados do user autenticado
+        $user = $user->find($request->user);
         $user->posts()->create($data); //array associativo pegando name do input para fazer o match coluna = valor
 
         return redirect()->route('admin.posts.index');
