@@ -11,11 +11,13 @@
             <div class="p-5 overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                 <form action="{{ route('admin.posts.update', $post->id) }}" method="post" enctype="multipart/form-data">
                     @csrf <!--Token crsf-->
+                    @method('PUT')
+
                     <div class="w-full mb-6">
                         <label for="" class="block mb-2 text-white">Título</label>
                         <input type="text" class="w-full rounded" name="title" value="{{ $post->title }}">
                         @error('title')
-                            <div class="mt-2 w-full rounded border border-red-600 bg-red-200 text-red-600 font-bold p-2">
+                            <div class="w-full p-2 mt-2 font-bold text-red-600 bg-red-200 border border-red-600 rounded">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -29,7 +31,7 @@
                         <label for="" class="block mb-2 text-white">Conteúdo</label>
                         <input type="text" class="w-full rounded" name="body" value="{{ $post->body }}">
                         @error('body')
-                            <div class="mt-2 w-full rounded border border-red-600 bg-red-200 text-red-600 font-bold p-2">
+                            <div class="w-full p-2 mt-2 font-bold text-red-600 bg-red-200 border border-red-600 rounded">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -48,19 +50,19 @@
                         </div>
                     </div>
 
-                    <div class="w-full mb-6 bg-white p-2">
+                    <div class="w-full p-2 mb-6 bg-white">
                         <div class="w-1/2">
                             @if ($post->thumb)
                                 <img src="{{ asset('storage/' . $post->thumb) }}"
                                     alt="Capa da Postagem: {{ $post->title }}">
                             @endif
                         </div>
-                        <div class="w-1/2 flex items-center justify-center">
+                        <div class="flex items-center justify-center w-1/2">
                             <label for="" class="block mb-2 text-black">Capa Postagem</label>
                             <input type="file" class="w-full rounded" name="thumb">
                             @error('thumb')
                                 <div
-                                    class="mt-2 w-full rounded border border-red-600 bg-red-200 text-red-600 font-bold p-2">
+                                    class="w-full p-2 mt-2 font-bold text-red-600 bg-red-200 border border-red-600 rounded">
                                     {{ $message }}
                                 </div>
                             @enderror

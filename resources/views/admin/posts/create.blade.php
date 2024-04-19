@@ -14,7 +14,7 @@
                         <label for="" class="block mb-2 text-white">Título</label>
                         <input type="text" class="w-full rounded" name="title">
                         @error('title')
-                            <div class="mt-2 w-full rounded border border-red-600 bg-red-200 text-red-600 font-bold p-2">
+                            <div class="w-full p-2 mt-2 font-bold text-red-600 bg-red-200 border border-red-600 rounded">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -27,7 +27,7 @@
                         <label for="" class="block mb-2 text-white">Conteúdo</label>
                         <input type="text" class="w-full rounded" name="body">
                         @error('body')
-                            <div class="mt-2 w-full rounded border border-red-600 bg-red-200 text-red-600 font-bold p-2">
+                            <div class="w-full p-2 mt-2 font-bold text-red-600 bg-red-200 border border-red-600 rounded">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -43,11 +43,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-full mb-6 bg-white p-2">
+                    <div class="w-full p-2 mb-6 bg-white">
                         <label for="" class="block mb-2 text-black">Capa Postagem</label>
                         <input type="file" class="w-full rounded" name="thumb">
                         @error('thumb')
-                            <div class="mt-2 w-full rounded border border-red-600 bg-red-200 text-red-600 font-bold p-2">
+                            <div class="w-full p-2 mt-2 font-bold text-red-600 bg-red-200 border border-red-600 rounded">
                                 {{ $message }}
                             </div>
                         @enderror
