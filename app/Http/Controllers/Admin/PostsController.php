@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -22,12 +23,13 @@ class PostsController extends Controller
         return view('admin.posts.index', compact('posts'));
     }
 
-    public function create()
+    public function create(User $user)
     {
-        return view('admin.posts.create');
+        $users = $user->all(['id', 'name']);
+        return view('admin.posts.create', compact('users'));
     }
 
-    public function store(PostRequest $request)
+    public function store(PostRequest $request, User $user)
     {
         // Active Record
         // $post = new Post();
@@ -42,8 +44,9 @@ class PostsController extends Controller
         $data = $request->all();
         $data['slug'] = Str::slug($data['title']); //melhorado com http://laravel.com/docs/10.x/eloquent-mutators
         $data['thumb'] = $request->thumb?->store('posts', 'public');
+        $user = $user->find($request->user);
 
-        $this->post->create($data); //array associativo pegando name do input para fazer o match coluna = valor
+        $user->posts()->create($data); //array associativo pegando name do input para fazer o match coluna = valor
 
         return redirect()->route('admin.posts.index');
     }

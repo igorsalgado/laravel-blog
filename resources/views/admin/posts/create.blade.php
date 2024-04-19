@@ -52,6 +52,20 @@
                             </div>
                         @enderror
                     </div>
+                    <div class="w-full p-2 mb-6 ">
+                        <label for="" class="block mb-2 text-white">Autor Postagem</label>
+                        <select name="user" class="w-full p-2 rounded">
+                            <option value="">Selecione o autor do post</option>
+                            @foreach ($users as $user)
+                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('thumb')
+                            <div class="w-full p-2 mt-2 font-bold text-red-600 bg-red-200 border border-red-600 rounded">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
                     <div class="flex justify-end w-full">
                         <button
                             class="px-4 py-2 mt-5 text-xl text-white transition duration-300 ease-in-out bg-green-700 rounded shadow text-bold hover:bg-green-900">

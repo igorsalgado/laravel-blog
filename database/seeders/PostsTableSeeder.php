@@ -14,8 +14,12 @@ class PostsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Post::factory(10)->create();
+        // \App\Models\Post::factory(10)->create();
 
-        \App\Models\Post::factory(10)->active()->create();
+        // \App\Models\Post::factory(10)->active()->create();
+
+        \App\Models\User::factory(10)
+            ->hasPosts(5, ['is_active' => true])
+            ->create();
     }
 }
